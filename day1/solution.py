@@ -1,20 +1,16 @@
 from typing import List
 
 
-def get_data(file_name):
-    with open(file_name, "r") as file:
-        puzzle_input = file.read().splitlines()
+def get_data(file_name: str) -> List[int]:
+    with open(file_name, "r") as f:
+        puzzle_input = f.read().splitlines()
         return list(map(int, puzzle_input))
 
 
 def count_increases(puzzle_input: List[int], sliding_window: int) -> int:
-    counter = 0
-    previous_sum = sum(puzzle_input[:sliding_window])
-    for i in range(1, len(puzzle_input) - sliding_window + 1):
-        new_sum = sum(puzzle_input[i:i + sliding_window])
-        counter += 1 if previous_sum < new_sum else 0
-        previous_sum = new_sum
-    return counter
+    summed_list = [sum(puzzle_input[i:i + sliding_window])
+                   for i in range(len(puzzle_input) - sliding_window + 1)]
+    return sum(map(lambda x: x[0] < x[1], zip(summed_list[:-1], summed_list[1:])))
 
 
 def exercise1(puzzle_input: List[int]) -> int:
