@@ -1,5 +1,5 @@
 import unittest
-import solution
+import day1.solution as solution
 
 
 class TestSolution(unittest.TestCase):
