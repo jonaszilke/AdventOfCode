@@ -70,9 +70,12 @@ def exercise2(numbers: List[int], boards: List[List[List[int]]]) -> int:
 
 
 if __name__ == "__main__":
-    numbers, boards = get_data("example_data")
-    assert exercise1(numbers, boards) == 4512
-    assert exercise2(numbers, boards) == 1924
+    test_numbers, test_boards = get_data("example_data")
+    test_solution = read_file("example_solution")
+    assert exercise1(test_numbers, test_boards) == int(test_solution[0])
+    assert exercise2(test_numbers, test_boards) == int(test_solution[1])
+
+
     numbers, boards = get_data("data")
     print(f"Exercise 1: {exercise1(numbers, boards)}")
     print(f"Exercise 2: {exercise2(numbers, boards)}")
