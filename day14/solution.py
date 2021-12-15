@@ -21,10 +21,8 @@ def step(chain: defaultdict, rules: Dict):
     new_chain = defaultdict(int)
     for k, v in chain.items():
         if k in rules:
-            x1 = k[0] + rules[k]
-            x2 = rules[k] + k[1]
-            new_chain[x1] += v
-            new_chain[x2] += v
+            new_chain[k[0] + rules[k]] += v
+            new_chain[rules[k] + k[1]] += v
         else:
             new_chain[k] += v
     return new_chain
